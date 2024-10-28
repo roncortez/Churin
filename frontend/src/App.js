@@ -6,6 +6,7 @@ import MenuList from './components/MenuList'; // Ajusta la ruta según la ubicac
 import AdminUpload from './components/AdminUpload'; // Importar el componente AdminUpload
 import Cart from './components/Cart';
 import Login from './components/Login';
+import Perfil from './components/Perfil';
 import { AuthProvider, useAuth } from './context/AuthContext'; // Asegúrate de importar el AuthProvider
 
 const App = () => {
@@ -34,7 +35,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<MenuList />} />
           <Route path='/login' element={<Login onLoginSuccess={handleLoginSuccess} />} />
-          
+          <Route path='/perfil' element={<Perfil />} /> 
           {/* Mostrar AdminUpload solo si el usuario es admin */}
           {userRole === 'admin' && (
             <Route path='/admin' element={<AdminUpload />} />

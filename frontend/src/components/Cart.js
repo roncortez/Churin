@@ -15,6 +15,7 @@ const Cart = () => {
     const [direccion, setDireccion] = useState('');
     const [costoEnvio, setCostoEnvio] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [finalizando, setFinalizando] = useState(false);
     const [error, setError] = useState(null);
     const totalPrice = cartItems.reduce((total, item) => total + item.precio * item.cantidad, 0);
 
@@ -51,6 +52,7 @@ const Cart = () => {
                 // Envía los detalles del pedido
                 await enviarDetallesPedido(idPedido);
 
+                setFinalizando(true);
 
                 const detallePedido = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/pedido/detalle-pedido/${idPedido}`);
                 console.log('detalle: ', detallePedido.data);
@@ -66,7 +68,7 @@ const Cart = () => {
                 }
                 const isDesktop = /Mobi|Android/i.test(navigator.userAgent) === false;
                 const phoneNumber = '593996995441'; // Reemplaza con el número deseado
-              // Usamos una variable para el tipo de entrega
+                // Usamos una variable para el tipo de entrega
                 const tipoPedido = isDelivery ? `para entregar en ${direccion}` : 'para retirar';
 
                 let mensaje = `Hola, hice un pedido ${tipoPedido}.\n\n`;
@@ -105,12 +107,13 @@ const Cart = () => {
 
 
                 const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mensaje)}`;
+
                 alert('Serás redirigido a Whatsapp para completar tu pedido');
-                
+
                 if (isDesktop) {
                     // Usar window.open si está en escritorio
                     const newWindow = window.open(whatsappURL, '_blank');
-        
+
                     // Verifica si se bloqueó la ventana emergente
                     if (!newWindow) {
                         alert('Por favor, permite las ventanas emergentes para este sitio.');
@@ -119,14 +122,20 @@ const Cart = () => {
                     // Usar window.location.href si está en móvil
                     window.location.href = whatsappURL;
                 }
-              
+
                 clearCart();
+                setCostoEnvio(0);
+                setDireccion('');
+                setIsDelivery(false);
+                setIsPickup(false);
             } else {
                 alert('Error al realizar el pedido');
             }
         } catch (error) {
             console.error('Error al enviar el pedido:', error);
             alert('Hubo un problema al enviar el pedido');
+        } finally {
+            setFinalizando(false);
         }
     };
 
@@ -302,11 +311,17 @@ const Cart = () => {
             </div>
 
             <h3>Subtotal: ${totalPrice.toFixed(2)}</h3>
-            <h3>Envío: ${costoEnvio}</h3>
+            <h3>Envío: ${costoEnvio.toFixed(2)}</h3>
             <h3>Total a pagar: ${(totalPrice + Number(costoEnvio)).toFixed(2)}</h3>
             {currentUser ?
                 <>
-                    <button className='carrito__button' onClick={finalizarPedido}>Finalizar pedido</button>
+                    <button
+                        className='carrito__button'
+                        onClick={finalizarPedido}
+                        disabled={finalizando} // Opcional: Desactiva el botón mientras finaliza
+                    >
+                        {finalizando? 'Finalizando...' : 'Finalizar pedido'}
+                    </button>
                     <Link className='carrito__button' to='/'>Volver al menú</Link></>
                 :
                 <Link className='carrito__button' to='/Login'>Inicia sesión para finalizar tu pedido</Link>

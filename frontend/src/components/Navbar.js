@@ -31,6 +31,11 @@ const Navbar = () => {
                     <li>
                         <Link to='/'>Inicio</Link>
                     </li>
+                    <li>
+                        <Link to='/perfil'>
+                            <FontAwesomeIcon icon={faUser} />
+                        </Link>
+                    </li>
                     {currentUser && userRole === 'admin' && ( // Solo muestra si el usuario es administrador
                         <li>
                             <Link to='/admin'>Administrador</Link>
@@ -47,6 +52,7 @@ const Navbar = () => {
                             <Link to='/Login'>Ingresar</Link>
                         </li>
                     )}
+                  
                     <li>
                         <Link to="/Cart">
                             <FontAwesomeIcon icon={faShoppingCart} />
