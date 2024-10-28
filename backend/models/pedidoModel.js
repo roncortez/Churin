@@ -35,6 +35,40 @@ const obtenerPedidos = async () => {
     }
 }
 
+const obtenerPedidosCliente = async (id) => {
+    try {
+        const query = `SELECT * FROM pedido WHERE id_cliente = $1`
+       
+        const pedidosCliente = await db.any(query, [id]);
+
+        const pedidosConFechayHora = pedidosCliente.map(pedido => {
+            
+            const fechaCompleta = new Date(pedido.fecha_hora);
+
+            // Extraer los componentes de fecha y hora sin convertir a UTC
+            const anio = fechaCompleta.getFullYear();
+            const mes= String(fechaCompleta.getMonth() + 1).padStart(2, '0'); // Mes va de 0 a 11
+            const dia = String(fechaCompleta.getDate()).padStart(2, '0');
+            const horas = String(fechaCompleta.getHours()).padStart(2, '0');
+            const minutos = String(fechaCompleta.getMinutes()).padStart(2, '0');
+
+            // Formatear la fecha y la hora manualmente
+            const fecha = `${anio}-${mes}-${dia}`;
+            const hora = `${horas}:${minutos}`;
+
+            return {
+                ...pedido,
+                fecha: fecha,
+                hora: hora,
+            };
+        })
+
+        return pedidosConFechayHora;
+    } catch (error) {
+        console.log('Error en modelo al obtener pedido del cliente: ', error);
+    }
+
+}
 
 const obtenerDetallePedidos = async (id) => {
     try {
@@ -81,5 +115,6 @@ module.exports = {
     enviarPedido,
     enviarDetallePedido,
     obtenerPedidos,
+    obtenerPedidosCliente,
     obtenerDetallePedidos
 }

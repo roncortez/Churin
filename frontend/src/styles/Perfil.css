@@ -1,0 +1,27 @@
+.perfil-container {
+    padding: 20px;
+}
+
+
+.grid-container {
+    display: grid;
+    border: 1px solid #AAAAAA;
+    grid-template-columns: repeat(4, 1fr);
+    width: 33%;
+    margin: 0 auto;
+}
+
+.grid-header {
+    font-weight: bold;
+}
+
+.grid-row {
+    display: contents; /* Permite mantener la estructura de la cuadrícula sin agregar un contenedor extra */
+    cursor: pointer; /* Cambia el cursor para indicar que es clicable */
+}
+
+.grid-item, .grid-header {
+    border: 1px solid #ddd; /* Borde de cada celda */
+    padding: 10px; /* Espaciado interno */
+    text-align: center;
+}

@@ -1,4 +1,4 @@
-const { obtenerPedidos, enviarPedido, enviarDetallePedido, obtenerDetallePedidos } = require('../models/pedidoModel');
+const { obtenerPedidos, enviarPedido, enviarDetallePedido, obtenerDetallePedidos, obtenerPedidosCliente } = require('../models/pedidoModel');
 
 
 const pedidoController = {
@@ -8,6 +8,16 @@ const pedidoController = {
             res.json(pedidos);
         } catch (error) {
             console.error('Error al obtener pedidos:', error)
+        }
+    },
+
+    obtenerPedidosCliente: async (req, res) => {
+        const clienteId = parseInt(req.params.id)
+        try {
+            const pedidoCliente = await obtenerPedidosCliente(clienteId);
+            res.json(pedidoCliente);
+        } catch (error) {
+            console.error('Error en controlador al obtener el pedido del cliente: ', error);
         }
     },
 

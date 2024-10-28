@@ -311,7 +311,7 @@ const Cart = () => {
             </div>
 
             <h3>Subtotal: ${totalPrice.toFixed(2)}</h3>
-            <h3>Envío: ${costoEnvio.toFixed(2)}</h3>
+            <h3>Envío: ${costoEnvio}</h3>
             <h3>Total a pagar: ${(totalPrice + Number(costoEnvio)).toFixed(2)}</h3>
             {currentUser ?
                 <>
