@@ -137,7 +137,7 @@ const obtenerDetallePedidos = async (id) => {
 
 const enviarPedido = async (id_cliente, total, delivery, lugar_envio) => {
     try {
-          const query = `
+        const query = `
             WITH inserted AS (
                 INSERT INTO pedido (id_cliente, total, fecha_hora, delivery, lugar_envio)
                 VALUES ($1, $2, CURRENT_TIMESTAMP, $3, $4)
@@ -198,6 +198,48 @@ const obtenerPedidoPorId = async (id) => {
     } catch (error) {
         console.error('Error al obtener pedido por ID', error);
         throw error;
+    }
+};
+const insertarPedido = async (id_cliente, total, delivery, lugar_envio, detalles) => {
+
+    try {
+        return db.tx(async t => {
+
+            // Insertar pedido 
+            const queryPedido = `
+                WITH inserted AS (
+                    INSERT INTO pedido (id_cliente, total, fecha_hora, delivery, lugar_envio)
+                    VALUES ($1, $2, CURRENT_TIMESTAMP, $3, $4)
+                    RETURNING *
+                )
+                SELECT i.*, to_char(i.fecha_hora, 'HH24:MI') as hora, u.first_name, u.last_name, u.telefono
+                FROM inserted i
+                INNER JOIN users u ON i.id_cliente = u.id
+                `;
+
+            const nuevoPedido = await t.one(queryPedido, [id_cliente, total, delivery, lugar_envio]);
+
+            const queryDetalle = `INSERT INTO detalle_pedidos (pedido_id, menu_id, cantidad, precio, ingredientes)
+                VALUES ($1, $2, $3, $4, $5)`;
+
+            await t.batch(detalles.mapd)
+
+
+
+            return nuevoPedido;
+
+
+
+
+
+            return { pedido: nuevoPedido, detalles: nuevosDetalles }
+
+
+        });
+
+
+    } catch (error) {
+        console.error('Error al insertar pedido con detalles', error)
     }
 }
 

@@ -64,11 +64,10 @@ useEffect(() => {
     return (
         <div className="sm:p-10 p-5">
             <div className="flex flex-col gap-5 w-full sm:w-1/2 mx-auto">
-                <h2 className="text-3xl font-bold" >¡Hola {cliente.first_name}!</h2>
-                {pedidos && pedidos.length > 0 ? 
-                <h3 className="text-2xl font-bold">Pedidos realizados</h3> :
-                <h3 className="text-2xl mx-auto">Aún no has realizado pedidos</h3>}
-                <ul>
+                <h2 className="text-3xl font-paytone font-bold" >¡Hola {cliente.first_name}!</h2>
+
+                <h3 className="text-2xl font-paytone font-semibold">{pedidos && pedidos.length > 0 ? "Pedidos realizados" : "Aún no has realizado pedidos"}</h3> 
+                <ul className="font-comfortaa">
                     {pedidos && pedidos.map(pedido => (
                         <li
                             className="bg-white mt-10 rounded-lg p-5 shadow-md"
