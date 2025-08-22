@@ -118,7 +118,7 @@ function MenuList() {
                           <span className='text-center font-semibold'>${item.precio}</span>
                           <button
                             onClick={() => handleAddToCart(item)}
-                            className="w-1/2 py-2 md:mx-auto
+                            className="w-full md:w-1/2 py-2 md:mx-auto
                                         text-xs md:text-base
                                         rounded-md bg-yellow-300 
                                         hover:bg-yellow-400">
