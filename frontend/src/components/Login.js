@@ -250,7 +250,7 @@ const Login = ({ onLoginSuccess }) => {
         </form>
       ) : (
         <form onSubmit={handleLogin} className="w-full  lg:w-1/3 lg:my-auto flex flex-col gap-2 lg:border overflow-auto p-10">
-          <h2 className='text-2xl font-bold'>Iniciar sesión</h2>
+          <h2 className='font-paytone text-2xl font-bold'>Iniciar sesión</h2>
           <div className="form-group flex gap-1">
             <label htmlFor="email">Usuario</label>
             <input

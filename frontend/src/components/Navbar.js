@@ -80,32 +80,32 @@ const Navbar = () => {
 
             <ul className={`font-comfortaa md:hidden overflow-hidden transition-all duration-300 flex flex-col px-10 py-2 ${open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
                 <li className="p-2 border-b w-full text-right">
-                    <Link to="/">
+                    <Link to="/" onClick={() => setOpen(false)}>
                         Inicio
                     </Link>
                 </li>
                 {currentUser && userRole === "admin" && (
                     <li className="p-2 border-b w-full text-right">
-                        <Link to="/admin">
+                        <Link to="/admin" onClick={() => setOpen(false)}>
                             Dashboard
                         </Link>
                     </li>
                 )}
                 <li className="p-2 border-b w-full text-right">
-                    <Link to="/Cart">
+                    <Link to="/Cart" onClick={() => setOpen(false)}>
                         <FontAwesomeIcon icon={faShoppingCart} />
                     </Link>
                 </li>
                 {currentUser ? (
                     <>
                         <li className="p-2 border-b w-full text-right">
-                            <Link to="/perfil">
+                            <Link to="/perfil" onClick={() => setOpen(false)}>
                                 <FontAwesomeIcon icon={faUser} />
                             </Link>
                         </li>
                         <li className="p-2 border-b w-full text-right">
                             <button
-                                onClick={handleLogout}
+                                onClick={() => {handleLogout(); setOpen(false);}}
                             
                             >
                                 Salir

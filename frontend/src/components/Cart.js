@@ -236,10 +236,10 @@ const Cart = () => {
     if (error) return <p>{error}</p>;
 
     return (
-        <div className="sm:p-10 p-5 flex flex-col sm:w-1/2 mx-auto gap-5">
+        <div className="font-comfortaa sm:p-10 p-5 flex flex-col sm:w-1/2 mx-auto gap-5">
             {cartItems.length > 0 && (
                 <div className='border flex flex-col gap-5'>
-                    <h3 className='px-4 py-2 text-lg font-bold bg-white'>¿Cómo quieres recibir tu pedido?</h3>
+                    <h3 className='font-paytone px-4 py-2 text-lg font-bold bg-white'>¿Cómo quieres recibir tu pedido?</h3>
                     <div className='flex flex-col py-5 px-10 gap-5'>
                         <div className='flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5'>
                             <div className='flex justify-center'>
@@ -285,7 +285,7 @@ const Cart = () => {
                 </div>)}
 
             <div className='border flex flex-col gap-5'>
-                <h3 className='px-4 py-2 text-lg font-bold bg-white'>Detalles del pedido</h3>
+                <h3 className='font-paytone px-4 py-2 text-lg font-bold bg-white'>Detalles del pedido</h3>
                 <div className='flex flex-col px-5 sm:py-5 sm:px-10 gap-5'>
                     {cartItems.length === 0 ? (
                         <div className='flex flex-col gap-5'>
