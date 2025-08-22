@@ -137,7 +137,7 @@ const Login = ({ onLoginSuccess }) => {
   if (loading) return <Loading />;
 
   return (
-    <div className="login-page h-screen">
+    <div className="login-page font-comfortaa h-screen">
       {showRegisterForm ? (
         <form onSubmit={handleRegister} className="w-full lg:w-1/3 lg:my-auto flex flex-col gap-2 lg:border overflow-auto p-10">
           <h2 className='text-2xl font-bold '>Crear cuenta</h2>

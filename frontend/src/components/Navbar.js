@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 import logo from '../assets/logo.jpg';
@@ -10,6 +10,7 @@ const Navbar = () => {
     const { currentUser, logout } = useAuth(); // Usa el hook useAuth para acceder a la autenticación
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole'); // Obtén el rol del usuario desde el localStorage
+    const [open, setOpen] = useState(false);
 
     const handleLogout = async () => {
         try {
@@ -22,12 +23,18 @@ const Navbar = () => {
     };
 
     return (
-        <nav className='font-comfortaa flex justify-around items-center bg-white py-2 shadow-md'>
-            <div className='navbar-logo-container'>
-                <img src={logo} alt='logo'></img>
-            </div>
+        <>
+            <nav className='font-comfortaa flex justify-around items-center bg-white px-10 md:px-0 py-2 shadow-md'>
+                <div className='navbar-logo-container mx-auto md:mx-0'>
+                    <img src={logo} alt='logo'></img>
+                </div>
 
-                <ul className="text-sm sm:text-lg flex w-2/3 sm:w-1/3 h-full justify-between">
+                <button className="md:hidden"
+                    onClick={() => setOpen(!open)}>
+                    ☰
+                </button>
+
+                <ul className="hidden md:flex text-sm sm:text-lg  w-2/3 sm:w-1/3 h-full justify-between">
                     <li className="flex-1 flex items-center justify-center text-center hover:font-bold">
                         <Link to="/" className="w-full h-full flex items-center justify-center">
                             Inicio
@@ -36,7 +43,7 @@ const Navbar = () => {
                     {currentUser && userRole === "admin" && (
                         <li className="flex-1 flex items-center justify-center text-center hover:font-bold">
                             <Link to="/admin" className="w-full h-full flex items-center justify-center">
-                                Administrador
+                                Dashboard
                             </Link>
                         </li>
                     )}
@@ -69,8 +76,51 @@ const Navbar = () => {
                         </li>
                     )}
                 </ul>
+            </nav>
 
-        </nav>
+            <ul className={`font-comfortaa md:hidden overflow-hidden transition-all duration-300 flex flex-col px-10 py-2 ${open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+                <li className="p-2 border-b w-full text-right">
+                    <Link to="/">
+                        Inicio
+                    </Link>
+                </li>
+                {currentUser && userRole === "admin" && (
+                    <li className="p-2 border-b w-full text-right">
+                        <Link to="/admin">
+                            Dashboard
+                        </Link>
+                    </li>
+                )}
+                <li className="p-2 border-b w-full text-right">
+                    <Link to="/Cart">
+                        <FontAwesomeIcon icon={faShoppingCart} />
+                    </Link>
+                </li>
+                {currentUser ? (
+                    <>
+                        <li className="p-2 border-b w-full text-right">
+                            <Link to="/perfil">
+                                <FontAwesomeIcon icon={faUser} />
+                            </Link>
+                        </li>
+                        <li className="p-2 border-b w-full text-right">
+                            <button
+                                onClick={handleLogout}
+                            
+                            >
+                                Salir
+                            </button>
+                        </li>
+                    </>
+                ) : (
+                    <li className="p-2 border-b w-full text-right">
+                        <Link to="/Login">
+                            Iniciar sesión
+                        </Link>
+                    </li>
+                )}
+            </ul>
+        </>
     );
 };
 
