@@ -67,13 +67,13 @@ function MenuList() {
 
       <div className="font-comfortaa">
         {categorias.map(categoria => (
-          <div className='sm:mx-20 mb-20' key={categoria.id}>
-            <div className="my-10 flex items-center justify-center space-x-4">
+          <div className='md:px-60 md:mb-20' key={categoria.id}>
+            <div className="my-5 md:my-10 flex items-center justify-center space-x-4">
               <h2 className="text-2xl font-semibold">{categoria.nombre}</h2>
-              <div className="sm:flex-grow sm:border-t-2 sm:border-gray-300" />
+              <div className="md:flex-grow md:border-t-2 md:border-gray-300" />
             </div>
 
-            <div className="flex gap-2 grid grid-cols-1 sm:grid-cols-1 sm:gap-3 md:grid-cols-3 ">
+            <div className="p-4 md:p-0 flex gap-2 grid grid-cols-1 sm:grid-cols-1 sm:gap-3 md:grid-cols-3 ">
               {groupedMenuItems[categoria.id] && groupedMenuItems[categoria.id].length > 0 ?
                 (groupedMenuItems[categoria.id].filter(item => item.activo).map(item => (
                   <div
@@ -96,22 +96,26 @@ function MenuList() {
                         </button>
                       </div>
                     ) : (
-                      <div className="flex sm:flex-col">
+                      <div className="flex md:flex-col md:max-w-sm">
                         {/* Contenedor con alto fijo */}
-                        <div className="w-1/2 sm:w-full flex">
+
+
+                        <div class="aspect-square w-1/2 md:w-full overflow-hidden rounded-lg">
                           <img
                             src={item.image_url}
                             alt={item.nombre}
-                            className="h-auto sm:w-full sm:h-96 object-cover rounded-lg"
+                            className="w-full h-full object-cover"
                           />
                         </div>
-                        <div className='p-6 md:p-8 w-1/2 gap-2 md:gap-5 h-full 
-                                        flex flex-col items-end md:items-start justify-center
+
+
+                        <div className='p-6 md:px-6 w-1/2 gap-2 md:gap-5 
+                                        flex flex-col items-end md:items-start justify-evenly md:justify-center
                                         text-right md:text-left  
                                         md:w-full'>
                           <h3 className="text-sm sm:text-xl font-bold">{item.nombre}</h3>
                           <p
-                            className='text-xs md:text-base md:line-clamp-2 md:h-[50px]'
+                            className='text-xs md:text-base line-clamp-3  md:line-clamp-2 md:h-[50px]'
                             title={item.descripcion}>
                             {item.descripcion}
                           </p>
@@ -132,6 +136,7 @@ function MenuList() {
                   Muy pronto podrás disfrutar de este nuevo plato
                 </div>)}
             </div>
+            <div className="w-1/3 h-0.5 bg-gray-300 mx-auto my-4 md:hidden"></div>
           </div>
         ))}
         {customizingItem && (

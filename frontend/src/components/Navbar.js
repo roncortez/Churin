@@ -25,11 +25,11 @@ const Navbar = () => {
     return (
         <>
             <nav className='font-comfortaa flex justify-around items-center bg-white px-10 md:px-0 py-2 shadow-md'>
-                <div className='navbar-logo-container mx-auto md:mx-0'>
-                    <img src={logo} alt='logo'></img>
+                <div className='mx-auto md:mx-0 '>
+                    <img src={logo} alt='logo' className='h-16'></img>
                 </div>
 
-                <button className="md:hidden"
+                <button className="md:hidden text-2xl"
                     onClick={() => setOpen(!open)}>
                     ☰
                 </button>
@@ -114,7 +114,7 @@ const Navbar = () => {
                     </>
                 ) : (
                     <li className="p-2 border-b w-full text-right">
-                        <Link to="/Login">
+                        <Link to="/Login" onClick={() => setOpen(false)}>
                             Iniciar sesión
                         </Link>
                     </li>
