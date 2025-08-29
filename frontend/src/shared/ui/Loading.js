@@ -1,18 +1,15 @@
 import React from "react";
-import logo2 from '../../assets/logo2.png';
+import logo2 from "../../assets/logo2.png";
 
 const Loading = () => {
-    return (
-        <div className="font-comfortaa fixed inset-0 bg-white bg-opacity-70 z-50 flex justify-center items-center">
-            <div className="flex flex-col font-semibold items-center">
-                <img 
-                    src={logo2}
-                    className="w-20 h-15 sm:w-40 sm:h-30 animate-bounce"
-                />
-                <p>Cargando...</p>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-70 font-comfortaa">
+      <div className="flex flex-col items-center font-semibold">
+        <img src={logo2} className="h-15 sm:h-30 w-20 animate-bounce sm:w-40" />
+        <p>Cargando...</p>
+      </div>
+    </div>
+  );
+};
 
 export default Loading;
