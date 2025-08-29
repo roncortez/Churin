@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { CartContext } from '../context/CartContext';
-import Loading from "./Loading";
+import { CartContext } from 'app/context/CartContext';
+import Loading from "shared/ui/Loading";
 
 
 function CustomizationModal({ item, onClose }) {

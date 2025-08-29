@@ -1,5 +1,5 @@
 import React from "react";
-import promo from "../assets/promo1.png"
+import promo from "../../assets/promo1.png"
 
 
 const Overlay = ({ isOpen, onClose }) => {

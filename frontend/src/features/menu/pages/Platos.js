@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import axios from 'axios';
-import '../styles/Platos.css'; // Ajusta la ruta según sea necesario
+import '../../../shared/styles/Platos.css'; // Ajusta la ruta según sea necesario
 
 const Platos = () => {
   const [platos, setPlatos] = useState([]);

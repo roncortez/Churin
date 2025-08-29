@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
-import logo from '../assets/logo.jpg';
+import logo from '../../assets/logo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { useAuth } from '../context/AuthContext'; // Importa el hook useAuth
+import { useAuth } from '../../app/context/AuthContext'; // Importa el hook useAuth
 
 const Navbar = () => {
     const { currentUser, logout } = useAuth(); // Usa el hook useAuth para acceder a la autenticación

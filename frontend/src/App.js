@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Register from './components/Register'
-import MenuList from './components/MenuList'; // Ajusta la ruta según la ubicación de MenuList
-import AdminUpload from './components/AdminUpload'; // Importar el componente AdminUpload
-import Cart from './components/Cart';
-import Login from './components/Login';
-import Perfil from './components/Perfil'
-import { AuthProvider, useAuth } from './context/AuthContext'; // Asegúrate de importar el AuthProvider
+import Navbar from 'shared/ui/Navbar';
+import Register from 'features/auth/pages/Register'
+import MenuList from 'features/menu/pages/MenuPage'; // Ajusta la ruta según la ubicación de MenuList
+import AdminUpload from 'features/admin/components/AdminUpload'; // Importar el componente AdminUpload
+import Cart from 'features/cart/pages/Cart';
+import Login from 'features/auth/pages/Login';
+import Perfil from 'features/account/pages/Perfil'
+import { AuthProvider, useAuth } from 'app/context/AuthContext'; // Asegúrate de importar el AuthProvider
 
 const App = () => {
   const [userRole, setUserRole] = useState(localStorage.getItem('userRole') || null); // Inicializa con el valor de localStorage si existe

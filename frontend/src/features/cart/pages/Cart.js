@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../../../app/context/CartContext';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import Loading from './Loading';
+import { useAuth } from '../../../app/context/AuthContext';
+import Loading from '../../../shared/ui/Loading';
 import axios from 'axios';
-import logo2 from '../assets/logo2.png';
-import '../styles/Cart.css';
+import logo2 from '../../../assets/logo2.png';
+import '../../../shared/styles/Cart.css';
 
 const Cart = () => {
     const { cartItems, setCartItems, removeFromCart, clearCart } = useContext(CartContext);

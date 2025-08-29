@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styles/Pedidos.css'
-import Loading from './Loading';
+import 'shared/styles/Pedidos.css'
+import Loading from 'shared/ui/Loading';
 
 function Pedidos() {
     const [pedidosPorFecha, setPedidosPorFecha] = useState([]);

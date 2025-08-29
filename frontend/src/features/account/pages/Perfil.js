@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import Loading from "./Loading";
-import { useAuth } from '../context/AuthContext';
+import Loading from "../../../shared/ui/Loading";
+import { useAuth } from '../../../app/context/AuthContext';
 
 const Perfil = () => {
 

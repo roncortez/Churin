@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SubirPlato from './SubirPlato';
-import Platos from './Platos';
-import Pedidos from './Pedidos';
-import Loading from './Loading';
-import '../styles/AdminUpload.css';
+import Platos from '../../menu/pages/Platos';
+import Pedidos from '../../orders/pages/OrdersPage';
+import Loading from '../../../shared/ui/Loading';
+import '../../../shared/styles/AdminUpload.css';
 
 const AdminUpload = () => {
   const [tipos, setTipos] = useState([]);

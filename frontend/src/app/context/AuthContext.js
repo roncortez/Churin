@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { auth } from '../firebaseConfig'; // Importa la configuración de Firebase
+import { auth } from 'shared/lib/firebaseConfig'; // Importa la configuración de Firebase
 
 const AuthContext = createContext();
 

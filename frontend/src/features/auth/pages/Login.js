@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { sendPasswordResetEmail, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { auth } from '../firebaseConfig';
-import '../styles/Login.css';
+import { auth } from '../../../shared/lib/firebaseConfig';
+import '../../../shared/styles/Login.css';
 import axios from 'axios';
-import Loading from './Loading'
+import Loading from '../../../shared/ui/Loading'
 
 const Login = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');

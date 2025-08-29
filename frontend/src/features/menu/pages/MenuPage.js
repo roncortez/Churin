@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import '../styles/MenuList.css';
+import '../../../shared/styles/MenuList.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { CartContext } from '../context/CartContext';
-import CustomizationModal from './CustomizationModal';
-import Overlay from './Overlay';
-import Loading from './Loading';
+import { CartContext } from '../../../app/context/CartContext';
+import CustomizationModal from '../components/CustomizationModal';
+import Overlay from '../../../shared/ui/Overlay';
+import Loading from '../../../shared/ui/Loading';
 
 function MenuList() {
   const [menuItems, setMenuItems] = useState([]);

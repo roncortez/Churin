@@ -1,6 +1,6 @@
 // Register.js
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';
+import { auth } from '../../../shared/lib/firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import axios from 'axios'; // Asegúrate de instalar axios
 
