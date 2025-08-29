@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../context/CartContext';
 import CustomizationModal from './CustomizationModal';
+import Overlay from './Overlay';
 import Loading from './Loading';
 
 function MenuList() {
@@ -14,6 +15,7 @@ function MenuList() {
   const [error, setError] = useState(null);
   const [customizingItem, setCustomizingItem] = useState(null);
   const [open, setOpen] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
   const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
@@ -62,6 +64,7 @@ function MenuList() {
 
   return (
     <div className="md:p-108 flex flex-col items-center">
+      <Overlay isOpen={showOverlay} onClose={() => setShowOverlay(false)} />
       <h1 className="font-paytone md:my-10 my-5 text-3xl font-bold text-center">MENÚ</h1>
       {error && <p>{error}</p>}
 
